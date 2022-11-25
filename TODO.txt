@@ -1,0 +1,4 @@
+-Very basic UI
+-Basic facts on one fixed country
+-Weather in capital city
+-Country selection

@@ -1,0 +1,16 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .current-events {
+    height: 50vh;
+    width: 28vw;
+    border: 1px solid #000;
+    text-align: center;
+    position: relative;
+    top: 8vh;
+  }

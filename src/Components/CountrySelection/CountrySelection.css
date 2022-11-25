@@ -1,0 +1,17 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+  }
+
+.country-selection {
+    position: relative;
+    border: 1px solid #000;
+    width: 80vw;
+    height: 30vh;
+    text-align: center;
+    top: 3vw;
+    margin: auto;
+}
