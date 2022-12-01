@@ -1,6 +1,4 @@
--Dropdown list country selection
 -Format large numbers
--Loading state for weather
 -Detect if independant or not
 -Bordering Countries
     -Maybe click-able to jump to info from that country

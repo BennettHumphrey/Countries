@@ -2,7 +2,7 @@ import "./CountrySelection.css"
 import { useState } from "react"
 import { CountryArray } from "../CountryArray"
 
-export function CountrySelection({country, setCountry}) {
+export function CountrySelection({country, setCountry, flag}) {
 
     const [input, setInput] = useState('')
 
@@ -20,20 +20,24 @@ const handleSubmit = (event) => {
 
     return (
         <section className="country-selection" >
-            <form onSubmit={handleSubmit}>
-                <input type="text" list="countries" onChange={handleInput} value={input} />
-                    
-                <input type='submit'  />
-            </form>
-            <datalist id="countries" >
-                        <option value="Canada" >Canada</option>
-                        <option value="Peru" >Peru</option>
-                        <option value="Bolivia" >Bolivia</option>
-                        {CountryArray.map((x, i) => <option value={x} key={i}>{x}</option>)}
-                    </datalist>
-            
-
-            <p>{country}</p>
-        </section>
+            <div className="country-selection-section">
+                <img className="flag flag-1" src={flag} alt="Current Country Flag"/> 
+            </div>
+                <div className="country-selection-section input-section">
+                <form onSubmit={handleSubmit}>
+                    <input type="text" className="text-input" list="countries" onChange={handleInput} value={input} />
+                    <input type='submit' className='button' />
+                </form>
+                <datalist id="countries" >
+                    <option value="Canada" >Canada</option>
+                    <option value="United States" >United States</option>
+                    {CountryArray.map((x, i) => <option value={x} key={i}>{x}</option>)}
+                </datalist>
+                <p className="description" >Input a country to see info about it, and its capital!</p>
+        </div>
+        <div className="country-selection-section">
+            <img className="flag" src={flag} alt="Current Country Flag"/> 
+        </div>
+            </section>
     )
 }

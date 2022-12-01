@@ -1,0 +1,25 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .content {
+    width: 90vw;
+    border: 1px solid #000;
+    position: relative;
+    top: 8vh;
+    padding: 1rem 0.5rem;
+    margin: auto;
+    background-color: #F9A03F;
+    margin-bottom: 3rem;
+  }
+

@@ -1,20 +1,27 @@
-import "./BasicFacts.css"
+import "../ContentWindow.css"
 import { useState, useEffect } from "react"
+import { LoadingWindow } from "../LoadingWindow/LoadingWindow";
 
 
-export function BasicFacts({facts}) {
+export function BasicFacts({facts, setFlag, setLoadingWindowHeight}) {
 
-    const [currencyInfo, setCurrencyInfo] = useState('')
-    const [flag, setFlag] = useState('')
-    const [exchangeRate, setExchangeRate] = useState('')
+    const [currencyInfo, setCurrencyInfo] = useState('');
+    const [exchangeRate, setExchangeRate] = useState('');
 
+    const windowHeight = () => {
+        const basicFactsWindow = document.getElementById('basicFactsWindow');
+        if(basicFactsWindow && basicFactsWindow.clientHeight > 200){
+            console.log(basicFactsWindow.clientHeight)
+        setLoadingWindowHeight(basicFactsWindow.clientHeight)
+        }
+    }
 
+    useEffect(() => windowHeight(), [facts])
 
     // Grabs currency info, sets currency code to be
     // used by second API
-    const r = facts[0]
+    const r = facts[0];
     const getCurrencyInfo = () => {
-        if(!r) {return 'error'};
         const c = Object.keys(r.currencies);
         const currency = r.currencies[c[0]].code;
         setCurrencyInfo(`${r.currencies[c[0]].symbol} ${r.currencies[c[0]].name}`);
@@ -33,10 +40,13 @@ export function BasicFacts({facts}) {
     
     // Gets exchange rate
     async function getCurrency(currency) {
+
         var url = `https://api.exchangerate.host/latest?base=USD&symbols=${currency}`;
         const response = await fetch(url);
         const responseJSON = await response.json();
+        if(!responseJSON.rates){return 'error'}
         const c = Object.keys(responseJSON.rates)
+
         console.log(`Economy Currency: ${currency}`)
         console.log(responseJSON);
         console.log(responseJSON.rates[c[0]])
@@ -44,30 +54,29 @@ export function BasicFacts({facts}) {
     }
 
     return r ? (
-        <section className="basic-facts" >
+        <section className="content" id="basicFactsWindow" >
+            <h2>
+                {r.name} is a country in {r.subregion}
+            </h2>
             <p>
-                {r.name} is a country in {r.region}.
+                -Capital: {r.capital}
             </p>
             <p>
-                Capital: {r.capital}
+                -Population: {r.population}
             </p>
             <p>
-                Population: {r.population}
+                -Currency: {currencyInfo}
             </p>
             <p>
-                Currency: {currencyInfo}
+                -Exchange rate: {exchangeRate}
             </p>
             <p>
-                Exchange rate: {exchangeRate}
+                -Area: {r.area} Square km
             </p>
             <p>
-                Area: {r.area} Square km
+                -People: {r.demonym}
             </p>
-            <p>
-                People: {r.demonym}
-            </p>
-            <img className="flag" src={flag} alt='Current Country Flag'/>
 
         </section>
-    ) : (<section className="basic-facts" ><p>Error</p></section>)
+    ) : (<LoadingWindow/>)
 }

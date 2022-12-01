@@ -8,10 +8,100 @@
 
 .country-selection {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     border: 1px solid #000;
-    width: 80vw;
-    height: 30vh;
+    width: 90vw;
     text-align: center;
     top: 3vw;
     margin: auto;
+    background-color: #F9A03F;
+}
+
+.country-selection-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.input-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input-section * {
+  margin: 0.8rem 0.5rem;
+}
+
+.text-input {
+  padding: 0.3rem;
+  width: 60vw;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.description {
+  margin-bottom: 0;
+}
+
+.button {
+  background: linear-gradient(to bottom right, hsl(155, 63%, 30%), hsl(135, 55%, 74%));
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.button:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+@media (min-width: 768px) {
+  .button-52 {
+    padding: 13px 50px 13px;
+  }
+}
+
+.flag {
+  height: 50%;
+  width: 80%;
+  margin: 1rem 0;
+}
+
+.flag-1 {
+  display: none;
+}
+
+@media only screen and (min-width: 700px) {
+  .flag-1 {
+    display: block;
+  }
 }

@@ -5,12 +5,19 @@
     text-decoration: none;
     color: inherit;
   }
-  
-  .history {
-    height: 50vh;
-    width: 28vw;
+
+.loading-window {
+    width: 90vw;
     border: 1px solid #000;
-    text-align: center;
     position: relative;
     top: 8vh;
+    padding: 1rem 0.5rem;
+    margin: auto;
+    background-color: #F9A03F;
+    margin-bottom: 3rem;
   }
+
+.loading-window > p {
+    text-align: center;
+}
+
