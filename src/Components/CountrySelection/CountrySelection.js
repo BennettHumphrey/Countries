@@ -30,7 +30,7 @@ const handleSubmit = (event) => {
                 </form>
                 <datalist id="countries" >
                     <option value="Canada" >Canada</option>
-                    <option value="United States" >United States</option>
+                    <option value="United States of America" >United States of America</option>
                     {CountryArray.map((x, i) => <option value={x} key={i}>{x}</option>)}
                 </datalist>
                 <p className="description" >Input a country to see info about it, and its capital!</p>

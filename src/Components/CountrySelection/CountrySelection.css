@@ -14,6 +14,7 @@
     align-items: center;
     border: 1px solid #000;
     width: 90vw;
+    max-width: 800px;
     text-align: center;
     top: 3vw;
     margin: auto;
@@ -52,6 +53,7 @@ form {
 
 .description {
   margin-bottom: 0;
+  padding-bottom: 0.5rem;
 }
 
 .button {
@@ -100,8 +102,16 @@ form {
   display: none;
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 750px) {
   .flag-1 {
     display: block;
+  }
+
+  .country-selection {
+    flex-direction: row;
+  }
+
+  .text-input {
+    max-width: 30vw;
   }
 }

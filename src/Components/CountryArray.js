@@ -17,6 +17,6 @@ export const CountryArray = ["Afghanistan","Aland Islands","Albania","Algeria","
 "Saint Barthelemy","Saint Helena, Ascension, and Tristan de Cunha","Saint Kitts and Nevis","Saint Lucia","Saint Martin","Saint Pierre & Miquelon","Saint Vincent and the Grenadines","Samoa","San Marino","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore",,"Sint Maarten",
 "Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Georgia","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Svalbard","Swaziland","Sweden","Switzerland","Syria",
 "Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tokelau","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu",
-"Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","United States Minor Outlying Islands","Uruguay","Uzbekistan",
+"Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","United States Minor Outlying Islands","Uruguay","Uzbekistan",
 "Vanuatu","Venezuela","Vietnam","Virgin Islands (British)","Virgin Islands (US)","Wallis and Futuna","Western Sahara","Yemen","Zambia","Zimbabwe"];
 
