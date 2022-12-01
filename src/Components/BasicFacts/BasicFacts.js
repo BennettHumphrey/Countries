@@ -5,8 +5,11 @@ import { LoadingWindow } from "../LoadingWindow/LoadingWindow";
 
 export function BasicFacts({facts, setFlag, setLoadingWindowHeight}) {
 
-    const [currencyInfo, setCurrencyInfo] = useState('');
+    const [currencySymbol, setCurrencySymbol] = useState('');
+    const [currencyName, setCurrencyName] = useState('');
+    const [currencyCode, setCurrencyCode] = useState('');
     const [exchangeRate, setExchangeRate] = useState('');
+    const [language, setLanguage] = useState('')
 
     const windowHeight = () => {
         const basicFactsWindow = document.getElementById('basicFactsWindow');
@@ -21,12 +24,21 @@ export function BasicFacts({facts, setFlag, setLoadingWindowHeight}) {
     // Grabs currency info, sets currency code to be
     // used by second API
     const r = facts[0];
+
     const getCurrencyInfo = () => {
         const c = Object.keys(r.currencies);
         const currency = r.currencies[c[0]].code;
-        setCurrencyInfo(`${r.currencies[c[0]].symbol} ${r.currencies[c[0]].name}`);
+        setCurrencySymbol(r.currencies[c[0]].symbol);
+        setCurrencyName(r.currencies[c[0]].name);
+        setCurrencyCode(r.currencies[c[0]].code);
         getCurrency(currency)
     }
+
+    const getLanguageInfo = () => {
+        const l = Object.keys(r.languages);
+        setLanguage(r.languages[l[0]].name);
+    }
+
     // Sets flag
     const getFlag = () => {
         if(!r){return 'error'};
@@ -34,9 +46,15 @@ export function BasicFacts({facts, setFlag, setLoadingWindowHeight}) {
     }
 
     useEffect(getCurrencyInfo, [facts, r])
+    useEffect(getLanguageInfo, [facts, r])
     useEffect(getFlag, [facts, r])
 
-    // URL for echange rate API
+    //Adds commas to number
+    const formatNumber = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    const  roundNumber = (x) => {
+        return formatNumber(Math.round(x* 100) / 100);
+    }
     
     // Gets exchange rate
     async function getCurrency(currency) {
@@ -46,35 +64,34 @@ export function BasicFacts({facts, setFlag, setLoadingWindowHeight}) {
         const responseJSON = await response.json();
         if(!responseJSON.rates){return 'error'}
         const c = Object.keys(responseJSON.rates)
-
-        console.log(`Economy Currency: ${currency}`)
-        console.log(responseJSON);
-        console.log(responseJSON.rates[c[0]])
         setExchangeRate(responseJSON.rates[c[0]])
     }
 
     return r ? (
         <section className="content" id="basicFactsWindow" >
             <h2>
-                {r.name} is a country in {r.subregion}
+                {r.name} is a {r.independent ? 'country' : 'territory'} in {r.subregion}
             </h2>
             <p>
                 -Capital: {r.capital}
             </p>
             <p>
-                -Population: {r.population}
+                -Population: {formatNumber(r.population)}
             </p>
             <p>
-                -Currency: {currencyInfo}
+                -Currency: {currencySymbol} {currencyName}
             </p>
             <p>
-                -Exchange rate: {exchangeRate}
+                -Exchange rate: $1USD = {currencySymbol} {roundNumber(exchangeRate)} {currencyCode}
             </p>
             <p>
-                -Area: {r.area} Square km
+                -Area: {formatNumber(r.area)} Square km
             </p>
             <p>
                 -People: {r.demonym}
+            </p>
+            <p>
+                -First official language: {language}
             </p>
 
         </section>

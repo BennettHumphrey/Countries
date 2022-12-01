@@ -1,5 +1,3 @@
--Format large numbers
--Detect if independant or not
 -Bordering Countries
     -Maybe click-able to jump to info from that country
 
