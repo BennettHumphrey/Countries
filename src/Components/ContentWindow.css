@@ -23,11 +23,41 @@
     margin-bottom: 3rem;
   }
 
+  .current-events-window {
+    line-height: 1.6;
+  }
+
+
+  .border-country-span {
+    text-decoration: underline;
+    margin-left: 3px;
+    padding-bottom: 1px;
+  }
+
+  .border-country-span:not(:last-child)::after {
+    content: ',';
+  }
+
+  .border-country-span:hover {
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 6px;
+    text-decoration: none;
+    /* Hack to make sure stuff doesn't move on hover */
+    margin-right: 1.4px;
+  }
+
+  .border-country-span:hover::after {
+    content: "";
+  }
+
   @media only screen and (min-width: 750px) {
     .content {
-      height: 250px;
+      height: 320px;
       margin: 3rem 2rem;
       max-width: 340px;
     }
+
+    
   }
 

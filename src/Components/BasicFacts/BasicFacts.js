@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { LoadingWindow } from "../LoadingWindow/LoadingWindow";
 
 
-export function BasicFacts({facts, setFlag, setLoadingWindowHeight}) {
+export function BasicFacts({facts, setFlag, setLoadingWindowHeight, setRequestType, setCountry}) {
 
     const [currencySymbol, setCurrencySymbol] = useState('');
     const [currencyName, setCurrencyName] = useState('');
@@ -36,13 +36,18 @@ export function BasicFacts({facts, setFlag, setLoadingWindowHeight}) {
 
     const getLanguageInfo = () => {
         const l = Object.keys(r.languages);
-        setLanguage(r.languages[l[0]].name);
+        setLanguage(r.languages[l[0]]);
     }
 
     // Sets flag
     const getFlag = () => {
         if(!r){return 'error'};
-        setFlag(r.flags.svg);
+        setFlag(r.flags[0]);
+    }
+
+    const changeCountry = (x) => {
+        setRequestType('alpha')
+        setCountry(x)
     }
 
     useEffect(getCurrencyInfo, [facts, r])
@@ -70,7 +75,7 @@ export function BasicFacts({facts, setFlag, setLoadingWindowHeight}) {
     return r ? (
         <section className="content" id="basicFactsWindow" >
             <h2>
-                {r.name} is a {r.independent ? 'country' : 'territory'} in {r.subregion}
+                {r.name.common} is a {r.independent ? 'country' : 'territory'} in {r.subregion}
             </h2>
             <p>
                 -Capital: {r.capital}
@@ -88,10 +93,17 @@ export function BasicFacts({facts, setFlag, setLoadingWindowHeight}) {
                 -Area: {formatNumber(r.area)} Square km
             </p>
             <p>
-                -People: {r.demonym}
+                -People: {r.demonyms.eng.m}
             </p>
             <p>
                 -First official language: {language}
+            </p>
+            <p className="border-country-p" >
+                -Bordering countries:
+            {r.borders ? r.borders.map((x, i) => {
+                if(i === 6 || i === 11){return (<><br/><span className="border-country-span" onClick={() => {changeCountry(x)}} >{x}</span></>)}
+                return (<span className="border-country-span" onClick={() => {changeCountry(x)}} >{x}</span>)
+            }) : ' None'}
             </p>
 
         </section>

@@ -21,7 +21,7 @@ export function CurrentEvents({setWeather, weather, capital, loadingWindowHeight
     const formatTime = (str) => str.substring(0, str.length-3);
 
     return loadingWeather ? (<LoadingWindow loadingWindowHeight={loadingWindowHeight} />):(
-        <section className="content" >
+        <section className="content current-events-window" >
 
             <h2>Weather in {weather.resolvedAddress}</h2>
             <p>-Temperature: {weather.currentConditions.temp}</p>

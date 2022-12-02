@@ -2,13 +2,18 @@ import "./CountrySelection.css"
 import { useState } from "react"
 import { CountryArray } from "../CountryArray"
 
-export function CountrySelection({country, setCountry, flag}) {
+export function CountrySelection({country, setRequestType, setCountry, flag}) {
 
     const [input, setInput] = useState('')
 
 const handleInput = (e) => {
     setInput(e.target.value)
-    console.log(input)
+    if(e.target.value.length <= 3) {
+        setRequestType('alpha')
+    } else {
+        setRequestType('name')
+    }
+    console.log(input.length)
 }
 
 const handleSubmit = (event) => {
@@ -31,7 +36,7 @@ const handleSubmit = (event) => {
                 <datalist id="countries" >
                     <option value="Canada" >Canada</option>
                     <option value="United States of America" >United States of America</option>
-                    {CountryArray.map((x, i) => <option value={x} key={i}>{x}</option>)}
+                    {CountryArray.map((x, i) => (<option value={x.code} key={i}>{x.name}</option>))}
                 </datalist>
                 <p className="description" >Input a country to see info about it, and its capital!</p>
         </div>
