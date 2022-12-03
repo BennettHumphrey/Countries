@@ -16,7 +16,9 @@ export function CurrentEvents({setWeather, weather, capital, loadingWindowHeight
         if(responseJSON){setLoadingWeather(false)}
     }
     
-    useEffect(() => getWeather, [capital])
+    useEffect(() => getWeather, 
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
+    [capital])
     
     const formatTime = (str) => str.substring(0, str.length-3);
 

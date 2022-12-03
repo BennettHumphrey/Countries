@@ -19,7 +19,9 @@ export function BasicFacts({facts, setFlag, setLoadingWindowHeight, setRequestTy
         }
     }
 
-    useEffect(() => windowHeight(), [facts])
+    useEffect(() => windowHeight(), 
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
+    [facts])
 
     // Grabs currency info, sets currency code to be
     // used by second API
@@ -50,9 +52,15 @@ export function BasicFacts({facts, setFlag, setLoadingWindowHeight, setRequestTy
         setCountry(x)
     }
 
-    useEffect(getCurrencyInfo, [facts, r])
-    useEffect(getLanguageInfo, [facts, r])
-    useEffect(getFlag, [facts, r])
+    useEffect(getCurrencyInfo, 
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
+        [facts, r])
+    useEffect(getLanguageInfo, 
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
+        [facts, r])
+    useEffect(getFlag, 
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
+        [facts, r])
 
     //Adds commas to number
     const formatNumber = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

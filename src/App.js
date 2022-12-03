@@ -31,7 +31,9 @@ function App() {
     console.log(responseJSON)
   }
   
-  useEffect(() => {getInfo()}, [country]);
+  useEffect(() => {getInfo()}, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps 
+  [country]);
 
   return (
       <div className="App">
