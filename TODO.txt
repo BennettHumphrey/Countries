@@ -1,3 +1,5 @@
+-Loading Icon
+-Properly deploy
 
 
 
